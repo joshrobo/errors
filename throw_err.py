@@ -6,11 +6,12 @@
 import sys
 import argparse
 
+available_errors = ["assertion", "io", "import", 
+                "index", "key", "name", "os", "type",
+                "value", "zerodivision"]
 parser = argparse.ArgumentParser()
 parser.add_argument("error_type",
-        help="Possible values: assertion, io, import, \
-                index, key, name, os, type, value, \
-                zerodivision")
+        choices=available_errors)
 args = parser.parse_args()
 error_type = args.error_type
 
@@ -34,7 +35,3 @@ elif error_type == "value":
     raise ValueError
 elif error_type == "zerodivision":
     raise ZeroDivisionError
-else:
-    sys.stderr.write("Sorry, not able to throw a(n) ")
-    sys.stderr.write(error_type + " error\n")
-    parser.print_help()
