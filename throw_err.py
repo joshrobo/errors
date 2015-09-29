@@ -15,23 +15,30 @@ error_type= args.error_type
 if error_type == "assertion":
     raise AssertionError
 elif error_type == "io":
-    raise IOError
+    filename = "NON_EXIST.txt"
+    with open(filename, 'r') as infile:
+        infile.write("GitHub username\t%s\n" % github_username)
 elif error_type == "import":
-    raise ImportError
+    from array import vector
 elif error_type == "index":
-    raise IndexError
+    a = array('c', [a, b, c, d, e])
+    print (a[6])
 elif error_type == "key":
     raise KeyError
 elif error_type == "name":
-    raise NameError
+    print(donut)
 elif error_type == "os":
     raise OSError
+elif error_type == "tab":
+print("error")
 elif error_type == "type":
-    raise TypeError
+    cat = 2
+    dog = "fish"
+    print (cat + dog) 
 elif error_type == "value":
-    raise ValueError
+    contains('team', 'i')
 elif error_type == "zerodivision":
-    raise ZeroDivisionError
+    print(1/0)
 else:
     sys.stderr.write("Sorry, not able to throw a(n) ")
     sys.stderr.write(error_type + " error\n")
